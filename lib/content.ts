@@ -1,5 +1,5 @@
 /*
-  Shared text for the site. Every claim here comes from the three builds or from how Bilal works.
+  Shared text for the site. Every claim here comes from the four builds or from how Bilal works.
   Do not add a result, a number or a client name unless it can be checked.
 */
 
@@ -9,7 +9,7 @@ export const services = [
   {
     title: "Web apps and SaaS MVPs",
     body: "Login, a database, payments and an admin panel, built and checked one milestone at a time.",
-    seenIn: ["gigboard", "chaser"],
+    seenIn: ["docket", "gigboard", "chaser"],
   },
   {
     title: "AI chatbots",
@@ -19,12 +19,12 @@ export const services = [
   {
     title: "OpenAI features",
     body: "OpenAI features added to an app you already have, with the key kept in your name.",
-    seenIn: ["sidekick"],
+    seenIn: ["docket", "sidekick"],
   },
   {
     title: "Dashboards, client portals and internal tools",
     body: "Screens that show your data clearly and let the right people act on it.",
-    seenIn: ["chaser", "gigboard"],
+    seenIn: ["docket", "chaser", "gigboard"],
   },
   {
     title: "Fixes for apps built with Lovable, Bolt, Replit or Cursor",
@@ -44,7 +44,7 @@ export const steps = [
 export const aboutParagraphs = [
   "I build web apps, SaaS MVPs and AI chatbots. I’m based in Lahore, Pakistan, on UTC+5.",
   "Every project starts with a written plan: scope, milestones, price and timeline, all agreed before any work begins. You get a preview link at every milestone, so you check real work, not status updates. The code and hosting stay in your name from the start.",
-  "The three builds on this site show how I work. Gigboard is a marketplace that holds payment until the buyer approves. Sidekick is a chatbot that answers only from a shop’s FAQ. Chaser is an invoice tracker. Each one has its code open on GitHub.",
+  "The four builds on this site show how I work. Docket reads messy orders and flags anything doubtful for a person to check. Gigboard is a marketplace that holds payment until the buyer approves. Sidekick is a chatbot that answers only from a shop’s FAQ. Chaser is an invoice tracker. Each one has its code open on GitHub.",
 ];
 
 export const tools = ["React", "Next.js", "Node.js", "TypeScript", "Supabase (PostgreSQL)", "OpenAI API", "Stripe", "REST APIs"];

@@ -22,6 +22,28 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "docket",
+    title: "Docket",
+    kind: "AI document intake",
+    line: "Messy orders in, checked data out. It reads PDFs, emails, photos and spreadsheets, matches every line to a catalog, and flags anything doubtful for a person to approve.",
+    stack: ["Next.js", "TypeScript", "Supabase", "OpenAI API (optional)"],
+    live: "https://docket-alpha-three.vercel.app",
+    code: "https://github.com/bilal404up/docket",
+    hero: { src: "/work/docket-home.png", alt: "Docket home page: a messy order on the left, and how each line was matched and flagged on the right.", w: 1440, h: 900 },
+    screens: [
+      { src: "/work/docket-review.png", alt: "The review screen: the original order beside the matched lines, with a possible duplicate flagged in plain words.", w: 1440, h: 900 },
+      { src: "/work/docket-mobile.png", alt: "Docket home page on a phone.", w: 780, h: 1688 },
+    ],
+    problem:
+      "Cafés send wholesale orders as PDFs, emails, phone photos and spreadsheet exports, each in their own words. Someone has to type every one into the system, and a misread quantity means the wrong bake. Docket reads each order, matches it to the catalog and shows a person exactly what to check.",
+    approach: [
+      { title: "The AI reads, the code decides", body: "The model only transcribes. Matching, dates, cut-offs, units and duplicates are plain rules, so every decision has a reason you can read." },
+      { title: "Nothing is guessed silently", body: "Each doubtful line is flagged with the words it came from, highlighted on the original document. A person confirms it, and Docket remembers that café’s wording next time." },
+      { title: "Every visitor gets a private sandbox", body: "Each demo visitor gets their own made-up bakery that clears after a day. Row-level security keeps one sandbox from seeing another, and tests check it." },
+    ],
+    checks: ["Add an order from the tray and watch each step of the reading", "Open a flagged order and confirm the suggested match", "Approve an order and see it land on the bake sheet"],
+  },
+  {
     slug: "gigboard",
     title: "Gigboard",
     kind: "Freelance marketplace",
