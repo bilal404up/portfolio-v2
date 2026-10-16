@@ -6,9 +6,19 @@ import "./globals.css";
 const sans = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
 const display = Fraunces({ subsets: ["latin"], variable: "--font-display", display: "swap", axes: ["opsz", "SOFT"] });
 
+const description = "Bilal is a full-stack developer in Lahore. Web apps, SaaS MVPs and AI chatbots, shown through four builds with their code open.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://portfolio-v2-gilt-rho-53.vercel.app"),
   title: { default: "Bilal, full-stack developer", template: "%s | Bilal" },
-  description: "Bilal is a full-stack developer in Lahore. Web apps, SaaS MVPs and AI chatbots, shown through four builds with their code open.",
+  description,
+  openGraph: {
+    title: "Bilal, full-stack developer",
+    description,
+    type: "website",
+    images: [{ url: "/work/docket-home.png", width: 1440, height: 900, alt: "Docket, one of the four builds" }],
+  },
+  twitter: { card: "summary_large_image", title: "Bilal, full-stack developer", description, images: ["/work/docket-home.png"] },
 };
 
 export const viewport: Viewport = { themeColor: "#F4F0E8" };
