@@ -26,9 +26,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               Bilal
             </Link>
             <nav aria-label="Main" className="nav">
-              <Link href="/#work">Work</Link>
-              <Link href="/#process">Process</Link>
-              <Link href="/#contact" className="nav-cta">
+              <Link href="/work">Work</Link>
+              <Link href="/services">Services</Link>
+              <Link href="/about">About</Link>
+              <Link href="/process">Process</Link>
+              <Link href="/contact" className="nav-cta">
                 Contact
               </Link>
             </nav>

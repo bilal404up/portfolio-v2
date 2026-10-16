@@ -28,7 +28,7 @@ export default function CasePage({ params }: Params) {
   return (
     <main id="main">
       <section className="wrap case-head">
-        <Link href="/#work" className="back">
+        <Link href="/work" className="back">
           ← All builds
         </Link>
         <p className="eyebrow reveal">
