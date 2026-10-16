@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Crumbs } from "@/components/Crumbs";
 import { getProject, projects } from "@/lib/projects";
 
 type Params = { params: { slug: string } };
@@ -27,16 +28,18 @@ export default function CasePage({ params }: Params) {
 
   return (
     <main id="main">
-      <section className="wrap case-head">
-        <Link href="/work" className="back">
-          ← All builds
-        </Link>
-        <p className="eyebrow reveal">
+      <section className="wrap page-head">
+        <Crumbs trail={[{ href: "/work", label: "Work" }, { label: p.title }]} />
+        <p className="eyebrow reveal" style={{ marginTop: "2.5rem", ["--d" as string]: "60ms" }}>
           {p.kind} · Demo, invented data
         </p>
-        <h1 className="display case-h1 reveal">{p.title}</h1>
-        <p className="lede reveal case-h1-lede">{p.line}</p>
-        <dl className="meta reveal">
+        <h1 className="display page-title reveal" style={{ marginTop: "1rem", ["--d" as string]: "120ms" }}>
+          {p.title}
+        </h1>
+        <p className="lede page-lede reveal" style={{ ["--d" as string]: "180ms" }}>
+          {p.line}
+        </p>
+        <dl className="meta reveal" style={{ ["--d" as string]: "240ms" }}>
           <div>
             <dt>Built with</dt>
             <dd>{p.stack.join(", ")}</dd>
@@ -44,16 +47,16 @@ export default function CasePage({ params }: Params) {
           <div>
             <dt>Open it</dt>
             <dd>
-              <a href={p.live} className="meta-link">
-                Live demo
+              <a href={p.live} className="link-draw">
+                Live demo ↗
               </a>
             </dd>
           </div>
           <div>
             <dt>Read it</dt>
             <dd>
-              <a href={p.code} className="meta-link">
-                Code on GitHub
+              <a href={p.code} className="link-draw">
+                Code on GitHub ↗
               </a>
             </dd>
           </div>
@@ -61,77 +64,76 @@ export default function CasePage({ params }: Params) {
       </section>
 
       <div className="wrap">
-        <figure className="frame case-hero reveal">
-          <div className="frame-chrome">
-            <span />
-            <span />
-            <span />
-          </div>
-          <Image src={p.hero.src} alt={p.hero.alt} width={p.hero.w} height={p.hero.h} priority sizes="(min-width: 1152px) 1088px, 100vw" className="block h-auto w-full" />
+        <figure className="frame reveal-img">
+          <Image src={p.hero.src} alt={p.hero.alt} width={p.hero.w} height={p.hero.h} priority sizes="(min-width: 1440px) 1300px, 100vw" className="block h-auto w-full" />
         </figure>
       </div>
 
-      <section className="wrap section-split">
-        <div>
-          <p className="eyebrow">The problem</p>
+      <section className="wrap" style={{ marginTop: "6rem" }}>
+        <div className="split">
+          <p className="eyebrow reveal">The problem</p>
+          <p className="prose-big reveal" style={{ ["--d" as string]: "80ms" }}>
+            {p.problem}
+          </p>
         </div>
-        <p className="prose">{p.problem}</p>
-      </section>
 
-      <section className="wrap section-split rule">
-        <div>
-          <p className="eyebrow">Decisions</p>
+        <div className="split">
+          <p className="eyebrow reveal">Decisions</p>
+          <ol className="decisions">
+            {p.approach.map((a, n) => (
+              <li key={a.title} className="reveal" style={{ ["--d" as string]: `${n * 100}ms` }}>
+                <span className="decision-num">{String(n + 1).padStart(2, "0")}</span>
+                <h3>{a.title}</h3>
+                <p>{a.body}</p>
+              </li>
+            ))}
+          </ol>
         </div>
-        <ol className="decisions">
-          {p.approach.map((a, n) => (
-            <li key={a.title}>
-              <span className="decision-num">{String(n + 1).padStart(2, "0")}</span>
-              <h3>{a.title}</h3>
-              <p className="muted">{a.body}</p>
-            </li>
-          ))}
-        </ol>
-      </section>
 
-      <section className="wrap section-split rule">
-        <div>
-          <p className="eyebrow">Screens</p>
-        </div>
-        <div className="screens">
-          {p.screens.map((s) => (
-            <figure key={s.src} className={s.w < s.h ? "screen-phone" : "screen-wide"}>
-              <div className={s.w < s.h ? "frame frame-phone" : "frame"}>
-                <Image src={s.src} alt={s.alt} width={s.w} height={s.h} sizes="(min-width: 1024px) 60vw, 100vw" className="block h-auto w-full" />
-              </div>
-              <figcaption className="small muted caption">{s.alt}</figcaption>
-            </figure>
-          ))}
-        </div>
-      </section>
-
-      <section className="stage checks-band">
-        <div className="wrap section-split">
-          <div>
-            <p className="eyebrow">Try it</p>
+        <div className="split">
+          <p className="eyebrow reveal">Screens</p>
+          <div className="screens">
+            {p.screens.map((s) => (
+              <figure key={s.src} className={s.w < s.h ? "screen-phone reveal" : "reveal"}>
+                <div className={s.w < s.h ? "frame frame-phone" : "frame"}>
+                  <Image src={s.src} alt={s.alt} width={s.w} height={s.h} sizes="(min-width: 1024px) 60vw, 100vw" className="block h-auto w-full" />
+                </div>
+                <figcaption className="caption">{s.alt}</figcaption>
+              </figure>
+            ))}
           </div>
+        </div>
+      </section>
+
+      <section className="dark cta-band" style={{ paddingBlock: "7rem" }}>
+        <div className="grain" aria-hidden="true" />
+        <div className="wrap hero-inner split" style={{ borderTop: 0, paddingBlock: 0 }}>
+          <p className="eyebrow reveal">Try it</p>
           <div>
-            <h2 className="h-section">Three things to check</h2>
+            <h2 className="h-section reveal">Three things to check</h2>
             <ol className="checks">
-              {p.checks.map((c) => (
-                <li key={c}>{c}</li>
+              {p.checks.map((c, n) => (
+                <li key={c} className="reveal" style={{ ["--d" as string]: `${n * 90}ms` }}>
+                  {c}
+                </li>
               ))}
             </ol>
-            <a href={p.live} className="btn btn-paper checks-cta">
-              Open the live demo
-            </a>
+            <div className="cta-actions">
+              <a href={p.live} className="btn btn-accent">
+                Open the live demo <span className="arrow">→</span>
+              </a>
+              <a href={p.code} className="btn btn-ghost-dark">
+                Read the code
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
-      <nav aria-label="Next build" className="wrap next-nav">
-        <Link href={`/work/${next.slug}`} className="next-link">
+      <nav aria-label="Next build" className="wrap">
+        <Link href={`/work/${next.slug}`} className="next-link" style={{ borderTop: 0 }}>
           <span className="eyebrow">Next build</span>
-          <span className="display next-title">{next.title}</span>
+          <span className="display next-title">{next.title} →</span>
         </Link>
       </nav>
     </main>

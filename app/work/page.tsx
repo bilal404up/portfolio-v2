@@ -1,26 +1,26 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Crumbs } from "@/components/Crumbs";
+import { WorkTable } from "@/components/WorkTable";
 import { projects } from "@/lib/projects";
 
 export const metadata: Metadata = { title: "Work" };
 
 export default function WorkIndex() {
+  const rows = projects.map((p) => ({ slug: p.slug, title: p.title, kind: p.kind, stack: p.stack.join(", "), image: p.hero.src }));
   return (
     <main id="main" className="wrap">
       <section className="page-head">
-        <p className="eyebrow">Work</p>
-        <h1 className="display page-title">Four builds, with the code open.</h1>
-        <p className="lede page-lede">Each build is a demo with invented data. Every one has a live link, its code on GitHub, and a case study that explains the decisions behind it.</p>
+        <Crumbs trail={[{ label: "Work" }]} />
+        <h1 className="display page-title reveal" style={{ ["--d" as string]: "80ms" }}>
+          Work
+        </h1>
+        <p className="lede page-lede reveal" style={{ ["--d" as string]: "160ms" }}>
+          Four builds, each a demo with invented data. Every one has a live link, its code on GitHub, and a case study that explains the decisions behind it.
+        </p>
       </section>
-      <div className="list-rows">
-        {projects.map((p, i) => (
-          <Link key={p.slug} href={`/work/${p.slug}`} className="list-row">
-            <span className="case-num">0{i + 1}</span>
-            <span className="list-row-title">{p.title}</span>
-            <span className="muted">{p.kind}. {p.line}</span>
-          </Link>
-        ))}
-      </div>
+      <section style={{ paddingBottom: "8rem" }}>
+        <WorkTable rows={rows} />
+      </section>
     </main>
   );
 }
