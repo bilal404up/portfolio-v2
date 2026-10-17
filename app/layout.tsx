@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Inter, Space_Grotesk } from "next/font/google";
 import { RevealObserver } from "@/components/RevealObserver";
 import { SiteHeader } from "@/components/SiteHeader";
-import { EMAIL } from "@/lib/content";
+import { EMAIL, GITHUB } from "@/lib/content";
 import "./globals.css";
 
 const sans = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
@@ -15,14 +15,13 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://portfolio-v2-gilt-rho-53.vercel.app"),
   title: { default: "Bilal, full-stack developer", template: "%s | Bilal" },
   description,
-  openGraph: {
-    title: "Bilal, full-stack developer",
-    description,
-    type: "website",
-    images: [{ url: "/work/docket-home.png", width: 1440, height: 900, alt: "Docket, one of the four builds" }],
-  },
-  twitter: { card: "summary_large_image", title: "Bilal, full-stack developer", description, images: ["/work/docket-home.png"] },
+  openGraph: { title: "Bilal, full-stack developer", description, type: "website", siteName: "Bilal" },
+  twitter: { card: "summary_large_image", title: "Bilal, full-stack developer", description },
 };
+
+/* Marks that JavaScript runs, so scroll-reveal content is only hidden when it can be revealed.
+   If the reveal script hasn't started after 4 seconds, the class is removed and everything shows. */
+const jsFlag = "document.documentElement.classList.add('js');setTimeout(function(){if(!window.__reveal)document.documentElement.classList.remove('js')},4000)";
 
 export const viewport: Viewport = { themeColor: "#111111" };
 
@@ -30,8 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${sans.variable} ${display.variable}`}>
       <head>
-        {/* Marks that JavaScript runs, so scroll-reveal content is only hidden when it can be revealed. */}
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        <script dangerouslySetInnerHTML={{ __html: jsFlag }} />
       </head>
       <body>
         <a href="#main" className="skip">
@@ -54,6 +52,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Link href="/services">Services</Link>
                 <Link href="/about">About</Link>
                 <Link href="/process">Process</Link>
+                <Link href="/contact">Contact</Link>
+                <a href={GITHUB} target="_blank" rel="noopener noreferrer">
+                  GitHub ↗
+                </a>
                 <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
               </nav>
             </div>

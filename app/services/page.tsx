@@ -4,7 +4,10 @@ import { Crumbs } from "@/components/Crumbs";
 import { services } from "@/lib/content";
 import { getProject } from "@/lib/projects";
 
-export const metadata: Metadata = { title: "Services" };
+export const metadata: Metadata = {
+  title: "Services",
+  description: "Web apps and SaaS MVPs, AI chatbots, OpenAI features, dashboards and fixes for apps built with AI tools. Each service links to a build that shows it.",
+};
 
 export default function Services() {
   return (
@@ -38,6 +41,7 @@ export default function Services() {
                   })}
                 </div>
               ) : null}
+              {s.note ? <p className="small muted" style={{ marginTop: "1rem" }}>{s.note}</p> : null}
             </div>
           </div>
         ))}

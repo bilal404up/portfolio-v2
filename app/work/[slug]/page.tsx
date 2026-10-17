@@ -16,7 +16,7 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: Params): Metadata {
   const p = getProject(params.slug);
   if (!p) return {};
-  return { title: p.title, description: p.line };
+  return { title: p.title, description: p.line, openGraph: { title: `${p.title} | Bilal`, description: p.line, images: [{ url: p.hero.src, width: p.hero.w, height: p.hero.h, alt: p.hero.alt }] } };
 }
 
 export default function CasePage({ params }: Params) {
@@ -47,7 +47,7 @@ export default function CasePage({ params }: Params) {
           <div>
             <dt>Open it</dt>
             <dd>
-              <a href={p.live} className="link-draw">
+              <a href={p.live} className="link-draw" target="_blank" rel="noopener noreferrer">
                 Live demo ↗
               </a>
             </dd>
@@ -55,7 +55,7 @@ export default function CasePage({ params }: Params) {
           <div>
             <dt>Read it</dt>
             <dd>
-              <a href={p.code} className="link-draw">
+              <a href={p.code} className="link-draw" target="_blank" rel="noopener noreferrer">
                 Code on GitHub ↗
               </a>
             </dd>
@@ -64,9 +64,12 @@ export default function CasePage({ params }: Params) {
       </section>
 
       <div className="wrap">
-        <figure className="frame reveal-img">
-          <Image src={p.hero.src} alt={p.hero.alt} width={p.hero.w} height={p.hero.h} priority sizes="(min-width: 1440px) 1300px, 100vw" className="block h-auto w-full" />
-        </figure>
+        {/* The shadow sits on the outer box, so the clip reveal on the inner one doesn't cut it off. */}
+        <div className="frame-shadow reveal">
+          <figure className="frame reveal-img">
+            <Image src={p.hero.src} alt={p.hero.alt} width={p.hero.w} height={p.hero.h} priority sizes="(min-width: 1440px) 1300px, 100vw" className="block h-auto w-full" />
+          </figure>
+        </div>
       </div>
 
       <section className="wrap" style={{ marginTop: "6rem" }}>
@@ -119,11 +122,11 @@ export default function CasePage({ params }: Params) {
               ))}
             </ol>
             <div className="cta-actions">
-              <a href={p.live} className="btn btn-accent">
-                Open the live demo <span className="arrow">→</span>
+              <a href={p.live} className="btn btn-accent" target="_blank" rel="noopener noreferrer">
+                Open the live demo <span className="arrow">↗</span>
               </a>
-              <a href={p.code} className="btn btn-ghost-dark">
-                Read the code
+              <a href={p.code} className="btn btn-ghost-dark" target="_blank" rel="noopener noreferrer">
+                Read the code ↗
               </a>
             </div>
           </div>

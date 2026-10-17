@@ -3,7 +3,10 @@ import Link from "next/link";
 import { Crumbs } from "@/components/Crumbs";
 import { steps } from "@/lib/content";
 
-export const metadata: Metadata = { title: "Process" };
+export const metadata: Metadata = {
+  title: "Process",
+  description: "How a project with Bilal runs: a written plan first, a small first milestone, a preview link at every step, and code in your name.",
+};
 
 export default function Process() {
   return (

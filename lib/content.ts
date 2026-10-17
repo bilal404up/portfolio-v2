@@ -4,8 +4,10 @@
 */
 
 export const EMAIL = "bilalup404@gmail.com";
+export const GITHUB = "https://github.com/bilal404up";
+export const SITE = "https://portfolio-v2-gilt-rho-53.vercel.app";
 
-export const services = [
+export const services: { title: string; body: string; seenIn: string[]; note?: string }[] = [
   {
     title: "Web apps and SaaS MVPs",
     body: "Login, a database, payments and an admin panel, built and checked one milestone at a time.",
@@ -19,7 +21,8 @@ export const services = [
   {
     title: "OpenAI features",
     body: "OpenAI features added to an app you already have, with the key kept in your name.",
-    seenIn: ["docket", "sidekick"],
+    seenIn: [],
+    note: "The OpenAI step is written into the code of Docket and Sidekick. It is switched off in the live demos, which run without a paid key.",
   },
   {
     title: "Dashboards, client portals and internal tools",
@@ -29,7 +32,7 @@ export const services = [
   {
     title: "Fixes for apps built with Lovable, Bolt, Replit or Cursor",
     body: "Broken login, exposed keys, Stripe webhooks and failed deploys. Send the repo and a description of what is going wrong.",
-    seenIn: [] as string[],
+    seenIn: [],
   },
 ];
 

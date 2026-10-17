@@ -18,15 +18,23 @@ export type Project = {
   problem: string;
   approach: { title: string; body: string }[];
   checks: string[];
+  /** Soft background behind the mockup, taken from the build's own colours. */
+  tint: string;
 };
+
+/** The phone screenshot of a build, used in the mockups. */
+export function phoneShot(p: Project) {
+  return p.screens.find((s) => s.w < s.h);
+}
 
 export const projects: Project[] = [
   {
     slug: "docket",
     title: "Docket",
-    kind: "AI document intake",
-    line: "Messy orders in, checked data out. It reads PDFs, emails, photos and spreadsheets, matches every line to a catalog, and flags anything doubtful for a person to approve.",
-    stack: ["Next.js", "TypeScript", "Supabase", "OpenAI API (optional)"],
+    kind: "Order intake",
+    line: "Messy orders in, checked data out. It reads order PDFs, emails and spreadsheet exports, matches every line to a catalog, and flags anything doubtful for a person to approve.",
+    stack: ["Next.js", "TypeScript", "Supabase", "OpenAI API (optional, off in the demo)"],
+    tint: "#F3E5D8",
     live: "https://docket-alpha-three.vercel.app",
     code: "https://github.com/bilal404up/docket",
     hero: { src: "/work/docket-home.png", alt: "Docket home page: a messy order on the left, and how each line was matched and flagged on the right.", w: 1440, h: 900 },
@@ -35,9 +43,9 @@ export const projects: Project[] = [
       { src: "/work/docket-mobile.png", alt: "Docket home page on a phone.", w: 780, h: 1688 },
     ],
     problem:
-      "Cafés send wholesale orders as PDFs, emails, phone photos and spreadsheet exports, each in their own words. Someone has to type every one into the system, and a misread quantity means the wrong bake. Docket reads each order, matches it to the catalog and shows a person exactly what to check.",
+      "Cafés send wholesale orders as PDFs, emails, phone photos and spreadsheet exports, each in their own words. Someone has to type every one into the system, and a misread quantity means the wrong bake. Docket reads each typed order, matches it to the catalog and shows a person exactly what to check.",
     approach: [
-      { title: "The AI reads, the code decides", body: "The model only transcribes. Matching, dates, cut-offs, units and duplicates are plain rules, so every decision has a reason you can read." },
+      { title: "Rules decide, nothing is guessed", body: "A rules reader turns each line into a product, a quantity and a unit. Matching, dates, cut-offs and duplicates are plain rules, so every decision has a reason you can read. An AI reader for photographed orders is in the code, switched off in the demo." },
       { title: "Nothing is guessed silently", body: "Each doubtful line is flagged with the words it came from, highlighted on the original document. A person confirms it, and Docket remembers that café’s wording next time." },
       { title: "Every visitor gets a private sandbox", body: "Each demo visitor gets their own made-up bakery that clears after a day. Row-level security keeps one sandbox from seeing another, and tests check it." },
     ],
@@ -49,6 +57,7 @@ export const projects: Project[] = [
     kind: "Freelance marketplace",
     line: "Fixed-price gigs where the payment waits until the buyer approves the work.",
     stack: ["Next.js", "TypeScript", "Supabase", "Stripe (test mode)"],
+    tint: "#DDE3EE",
     live: "https://gigboard-cyan.vercel.app",
     code: "https://github.com/bilal404up/gigboard",
     hero: { src: "/work/gigboard-home.png", alt: "Gigboard home page: a split-flap board listing gigs with seller, delivery time, price and rating.", w: 1440, h: 900 },
@@ -70,7 +79,8 @@ export const projects: Project[] = [
     title: "Sidekick",
     kind: "Support chatbot",
     line: "A support assistant that answers only from a shop’s own FAQ, and asks the owner when it doesn’t know.",
-    stack: ["Next.js", "TypeScript", "Supabase", "OpenAI API (optional)"],
+    stack: ["Next.js", "TypeScript", "Supabase", "OpenAI API (optional, off in the demo)"],
+    tint: "#DFEBE1",
     live: "https://sidekick-livid.vercel.app",
     code: "https://github.com/bilal404up/sidekick",
     hero: { src: "/work/sidekick-home.png", alt: "Sidekick: a live chat, the FAQ it answers from and the owner’s inbox, side by side.", w: 1280, h: 720 },
@@ -93,6 +103,7 @@ export const projects: Project[] = [
     kind: "Invoice reminder tool",
     line: "An invoice tracker that counts the days overdue and writes reminders that get firmer the longer an invoice is late.",
     stack: ["Next.js", "TypeScript", "Supabase", "Stripe (test mode)"],
+    tint: "#EFE6CC",
     live: "https://chaser-taupe.vercel.app",
     code: "https://github.com/bilal404up/chaser",
     hero: { src: "/work/chaser-home.png", alt: "Late invoices shown as paper slips, with the days overdue in large type.", w: 1280, h: 960 },

@@ -3,10 +3,12 @@ import { Crumbs } from "@/components/Crumbs";
 import { WorkTable } from "@/components/WorkTable";
 import { projects } from "@/lib/projects";
 
-export const metadata: Metadata = { title: "Work" };
+export const metadata: Metadata = {
+  title: "Work",
+  description: "Four builds by Bilal: Docket, Gigboard, Sidekick and Chaser. Each has a live demo, its code on GitHub and a case study.",
+};
 
 export default function WorkIndex() {
-  const rows = projects.map((p) => ({ slug: p.slug, title: p.title, kind: p.kind, stack: p.stack.join(", "), image: p.hero.src }));
   return (
     <main id="main" className="wrap">
       <section className="page-head">
@@ -19,7 +21,7 @@ export default function WorkIndex() {
         </p>
       </section>
       <section style={{ paddingBottom: "8rem" }}>
-        <WorkTable rows={rows} />
+        <WorkTable projects={projects} />
       </section>
     </main>
   );

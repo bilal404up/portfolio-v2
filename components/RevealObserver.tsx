@@ -9,6 +9,8 @@ export function RevealObserver() {
   const path = usePathname();
 
   useEffect(() => {
+    // Tells the 4-second fail-safe in layout.tsx that reveals are running.
+    (window as Window & { __reveal?: boolean }).__reveal = true;
     const els = document.querySelectorAll<HTMLElement>(".reveal, .reveal-img");
     if (!("IntersectionObserver" in window)) {
       els.forEach((el) => el.classList.add("is-in"));

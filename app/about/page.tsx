@@ -2,9 +2,12 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Crumbs } from "@/components/Crumbs";
-import { aboutParagraphs, tools } from "@/lib/content";
+import { aboutParagraphs, GITHUB, tools } from "@/lib/content";
 
-export const metadata: Metadata = { title: "About" };
+export const metadata: Metadata = {
+  title: "About",
+  description: "Bilal is a full-stack developer in Lahore, Pakistan. Web apps, SaaS MVPs and AI chatbots, each started with a written plan.",
+};
 
 export default function About() {
   return (
@@ -42,6 +45,9 @@ export default function About() {
             <Link href="/contact" className="btn btn-ink">
               Tell me what you are building <span className="arrow">→</span>
             </Link>
+            <a href={GITHUB} className="btn btn-line" target="_blank" rel="noopener noreferrer">
+              GitHub ↗
+            </a>
           </div>
         </div>
       </section>

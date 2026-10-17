@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { Crumbs } from "@/components/Crumbs";
-import { EMAIL } from "@/lib/content";
+import { EMAIL, GITHUB } from "@/lib/content";
 
-export const metadata: Metadata = { title: "Contact" };
+export const metadata: Metadata = {
+  title: "Contact",
+  description: "Email Bilal about a web app, SaaS MVP or AI chatbot. A few lines is enough; the reply is questions or a short written plan.",
+};
 
 const include = ["What it should do", "Who will use it", "Any deadline or budget", "Links to anything that already exists"];
 
@@ -33,6 +36,11 @@ export default function Contact() {
           </ul>
           <p className="small muted reveal" style={{ marginTop: "3rem" }}>
             I’m in Lahore, Pakistan, on UTC+5. Work and payment go through Upwork, with milestones.
+          </p>
+          <p className="small reveal" style={{ marginTop: "1rem" }}>
+            <a href={GITHUB} className="link-draw" target="_blank" rel="noopener noreferrer">
+              See my code on GitHub ↗
+            </a>
           </p>
         </div>
       </section>
