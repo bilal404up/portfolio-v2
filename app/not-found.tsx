@@ -5,7 +5,7 @@ export default function NotFound() {
     <main id="main" className="wrap">
       <section className="page-head" style={{ paddingBottom: "8rem" }}>
         <p className="eyebrow">Error 404</p>
-        <h1 className="display page-title">This page isn&apos;t here.</h1>
+        <h1 className="display page-title">This page isn’t here.</h1>
         <p className="lede page-lede">The link may be old. The work and the contact details are one click away.</p>
         <div className="cta-actions">
           <Link href="/work" className="btn btn-ink">

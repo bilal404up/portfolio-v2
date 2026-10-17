@@ -20,7 +20,7 @@ export const services: { title: string; body: string; seenIn: string[]; note?: s
   },
   {
     title: "OpenAI features",
-    body: "OpenAI features added to an app you already have, with the key kept in your name.",
+    body: "An AI step added to an app you already have, such as answers from your own documents or reading incoming text, with the API key kept in your name.",
     seenIn: [],
     note: "The OpenAI step is written into the code of Docket and Sidekick. It is switched off in the live demos, which run without a paid key.",
   },
@@ -45,7 +45,7 @@ export const steps = [
 ];
 
 export const aboutParagraphs = [
-  "I build web apps, SaaS MVPs and AI chatbots. I’m based in Lahore, Pakistan, on UTC+5.",
+  "I’m Bilal, a full-stack developer based in Lahore, Pakistan, working on UTC+5.",
   "Every project starts with a written plan: scope, milestones, price and timeline, all agreed before any work begins. You get a preview link at every milestone, so you check real work, not status updates. The code and hosting stay in your name from the start.",
   "The four builds on this site show how I work. Docket reads messy orders and flags anything doubtful for a person to check. Gigboard is a marketplace that holds payment until the buyer approves. Sidekick is a chatbot that answers only from a shop’s FAQ. Chaser is an invoice tracker. Each one has its code open on GitHub.",
 ];

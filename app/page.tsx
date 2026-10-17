@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CtaBand } from "@/components/CtaBand";
 import { Mockup } from "@/components/Mockup";
 import { EMAIL, GITHUB, services, tools } from "@/lib/content";
 import { projects } from "@/lib/projects";
@@ -73,7 +74,7 @@ export default function Home() {
           <div>
             <p className="eyebrow reveal">Selected work</p>
             <h2 className="h-section section-title reveal" style={{ ["--d" as string]: "80ms" }}>
-              Four builds, code open.
+              Four live builds you can try.
             </h2>
           </div>
           <Link href="/work" className="link-draw reveal">
@@ -108,10 +109,10 @@ export default function Home() {
         <div>
           <p className="eyebrow reveal">Who you work with</p>
           <h2 className="h-section section-title reveal" style={{ ["--d" as string]: "80ms" }}>
-            Hi, I&apos;m Bilal.
+            Hi, I’m Bilal.
           </h2>
           <p className="lede reveal" style={{ marginTop: "1.75rem", ["--d" as string]: "160ms" }}>
-            I&apos;m a full-stack developer in Lahore, Pakistan, on UTC+5. I build web apps, SaaS MVPs and AI chatbots, and every project starts with a written plan you agree to first.
+            I’m a full-stack developer in Lahore, Pakistan, on UTC+5. I build web apps, SaaS MVPs and AI chatbots, and every project starts with a written plan you agree to first.
           </p>
           <div className="cta-actions reveal" style={{ ["--d" as string]: "240ms" }}>
             <Link href="/about" className="btn btn-ink">
@@ -146,25 +147,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact band */}
-      <section className="dark cta-band">
-        <div className="hero-glow" aria-hidden="true" />
-        <div className="grain" aria-hidden="true" />
-        <div className="wrap hero-inner">
-          <p className="eyebrow reveal">Start with a written plan</p>
-          <h2 className="display cta-title reveal" style={{ ["--d" as string]: "80ms" }}>
-            Tell me what you are <span className="accent">building.</span>
-          </h2>
-          <div className="cta-actions reveal" style={{ ["--d" as string]: "160ms" }}>
-            <Link href="/contact" className="btn btn-accent">
-              Get in touch <span className="arrow">→</span>
-            </Link>
-            <Link href="/process" className="btn btn-ghost-dark">
-              See how I work
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CtaBand />
     </main>
   );
 }

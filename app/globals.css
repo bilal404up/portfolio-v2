@@ -185,6 +185,11 @@
   background: #fff;
   color: var(--ink);
 }
+/* On the Contact page the pill stays readable: white text, a ring marks the current page. */
+.nav .nav-cta[aria-current="page"] {
+  color: #fff;
+  box-shadow: 0 0 0 2px var(--dark), 0 0 0 3px var(--accent-on-dark);
+}
 .menu-btn {
   display: none;
   width: 44px;
@@ -454,6 +459,10 @@
   .reel-shot {
     padding-bottom: 0.9rem;
   }
+  /* On phones the headline sits over the reel, so it gets more shade. */
+  .hero-shade {
+    background: linear-gradient(180deg, rgba(17, 17, 17, 0.85) 0%, rgba(17, 17, 17, 0.25) 18%, rgba(17, 17, 17, 0.55) 34%, rgba(17, 17, 17, 0.9) 52%, #111 70%);
+  }
 }
 .grain {
   position: absolute;
@@ -564,6 +573,9 @@
 }
 .section-title {
   margin-top: 1rem;
+}
+.section-head .link-draw {
+  justify-self: start;
 }
 
 /* ---------- Featured cards ---------- */
@@ -752,6 +764,42 @@
   transform: translateX(14px);
   color: var(--accent);
 }
+/* An arrow at the end of each row, so it reads as a link before hover. */
+.table-arrow {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-top: -22px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  font-size: 1.1rem;
+  transition: background-color 300ms, color 300ms, border-color 300ms, transform 400ms var(--ease);
+}
+.table-row:hover .table-arrow {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  transform: translateX(-6px);
+}
+@media (min-width: 900px) {
+  .table-row {
+    padding-right: 4.5rem;
+  }
+}
+@media (max-width: 899px) {
+  .table-arrow {
+    top: auto;
+    bottom: 2.1rem;
+    margin-top: 0;
+  }
+  .table-row .table-cell.muted {
+    padding-right: 3.5rem;
+  }
+}
 .table-cell {
   font-size: 1rem;
   color: var(--ink);
@@ -843,6 +891,19 @@
     grid-template-columns: 4rem minmax(0, 5fr) minmax(0, 6fr);
     gap: 2rem;
   }
+}
+@media (max-width: 899px) {
+  .svc-row {
+    gap: 0.6rem;
+    padding-block: 2rem;
+  }
+}
+a.svc-row .svc-title {
+  transition: color 250ms, transform 500ms var(--ease);
+}
+a.svc-row:hover .svc-title {
+  color: var(--accent);
+  transform: translateX(10px);
 }
 .svc-num {
   font-family: var(--font-display), system-ui, sans-serif;
@@ -941,11 +1002,11 @@ a.chip:hover {
 }
 .prose-big {
   font-family: var(--font-display), system-ui, sans-serif;
-  font-size: clamp(1.6rem, 3vw, 2.6rem);
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
   font-weight: 400;
-  line-height: 1.25;
-  letter-spacing: -0.015em;
-  max-width: 36ch;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  max-width: 40ch;
 }
 .decisions {
   display: grid;
@@ -979,6 +1040,25 @@ a.chip:hover {
 }
 .screen-phone {
   max-width: 19rem;
+}
+.screen-phone-row {
+  display: grid;
+  gap: 1.25rem;
+}
+@media (min-width: 760px) {
+  .screen-phone-row {
+    grid-template-columns: 19rem minmax(0, 1fr);
+    gap: 3rem;
+    align-items: center;
+  }
+}
+.caption-side {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 26rem;
+  margin-top: 0;
+  font-size: 1.05rem;
+  line-height: 1.6;
 }
 .caption {
   margin-top: 0.85rem;
@@ -1184,8 +1264,10 @@ a.chip:hover {
 .footer-word {
   font-family: var(--font-display), system-ui, sans-serif;
   font-weight: 700;
-  font-size: clamp(4rem, 17vw, 16rem);
-  line-height: 0.85;
+  /* Sized so the word spans the full content width, like a signature. */
+  font-size: min(31vw, 28rem);
+  line-height: 0.8;
+  white-space: nowrap;
   letter-spacing: -0.02em;
   text-transform: uppercase;
 }
@@ -1297,8 +1379,15 @@ a.chip:hover {
   }
   .marquee-track {
     flex-wrap: wrap;
+    justify-content: center;
     width: auto;
-    row-gap: 1rem;
+    row-gap: 0.75rem;
+    padding-inline: 1.25rem;
+  }
+  .marquee-item {
+    padding-inline: 1rem;
+    gap: 2rem;
+    font-size: clamp(1.15rem, 2.4vw, 2rem);
   }
   /* The second copy only exists for the loop. */
   .marquee-item[aria-hidden="true"] {

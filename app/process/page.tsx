@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Crumbs } from "@/components/Crumbs";
+import { CtaBand } from "@/components/CtaBand";
 import { steps } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -10,7 +10,8 @@ export const metadata: Metadata = {
 
 export default function Process() {
   return (
-    <main id="main" className="wrap">
+    <main id="main">
+      <div className="wrap">
       <section className="page-head">
         <Crumbs trail={[{ label: "Process" }]} />
         <h1 className="display page-title reveal" style={{ ["--d" as string]: "80ms" }}>
@@ -29,14 +30,11 @@ export default function Process() {
           </li>
         ))}
       </ol>
-      <div style={{ paddingBlock: "3rem 8rem" }}>
-        <p className="small muted reveal">Work and payment stay on Upwork, with a milestone for each step.</p>
-        <div className="cta-actions reveal">
-          <Link href="/contact" className="btn btn-ink">
-            Start with step one <span className="arrow">→</span>
-          </Link>
-        </div>
+      <p className="small muted reveal" style={{ paddingBlock: "2rem 7rem" }}>
+        Work and payment stay on Upwork, with a milestone for each step.
+      </p>
       </div>
+      <CtaBand eyebrow="Step one is a message" secondary={{ href: "/work", label: "See the work" }} />
     </main>
   );
 }

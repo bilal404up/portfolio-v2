@@ -45,7 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </p>
             <div className="footer-row">
               <p className="small" style={{ color: "var(--on-dark-muted)" }}>
-                Full-stack developer in Lahore, UTC+5. The four builds on this site are demos with invented data.
+                Full-stack developer in Lahore, UTC+5. The four builds are working demos with sample data, and their code is on GitHub.
               </p>
               <nav aria-label="Footer" className="footer-links">
                 <Link href="/work">Work</Link>

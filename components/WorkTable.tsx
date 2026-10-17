@@ -44,6 +44,9 @@ export function WorkTable({ projects }: { projects: Project[] }) {
           <span className="table-title">{p.title}</span>
           <span className="table-cell">{p.kind}</span>
           <span className="table-cell muted">{p.stack.join(", ")}</span>
+          <span className="table-arrow" aria-hidden="true">
+            →
+          </span>
         </Link>
       ))}
       <div ref={preview} className={`hover-preview ${active ? "is-on" : ""}`} aria-hidden="true">

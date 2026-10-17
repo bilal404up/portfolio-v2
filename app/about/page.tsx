@@ -23,7 +23,7 @@ export default function About() {
           <Image src="/about/bilal-headshot.png" alt="Bilal, full-stack developer, in a green park" width={1254} height={1254} priority sizes="(min-width: 900px) 40vw, 100vw" />
         </div>
         <div>
-          <h2 className="h-section reveal">Bilal, full-stack developer in Lahore.</h2>
+          <h2 className="h-section reveal">I build web apps, SaaS MVPs and AI chatbots.</h2>
           <div className="about-body" style={{ marginTop: "2rem" }}>
             {aboutParagraphs.map((p, i) => (
               <p key={p.slice(0, 40)} className="reveal" style={{ ["--d" as string]: `${i * 80}ms` }}>

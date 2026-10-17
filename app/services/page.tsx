@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Crumbs } from "@/components/Crumbs";
+import { CtaBand } from "@/components/CtaBand";
 import { services } from "@/lib/content";
 import { getProject } from "@/lib/projects";
 
@@ -11,7 +12,8 @@ export const metadata: Metadata = {
 
 export default function Services() {
   return (
-    <main id="main" className="wrap">
+    <main id="main">
+      <div className="wrap">
       <section className="page-head">
         <Crumbs trail={[{ label: "Services" }]} />
         <h1 className="display page-title reveal" style={{ ["--d" as string]: "80ms" }}>
@@ -46,6 +48,8 @@ export default function Services() {
           </div>
         ))}
       </section>
+      </div>
+      <CtaBand eyebrow="Not sure which one fits?" />
     </main>
   );
 }

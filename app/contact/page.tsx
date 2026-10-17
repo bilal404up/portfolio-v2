@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CopyEmail } from "@/components/CopyEmail";
 import { Crumbs } from "@/components/Crumbs";
 import { EMAIL, GITHUB } from "@/lib/content";
 
@@ -15,7 +16,7 @@ export default function Contact() {
       <section className="page-head">
         <Crumbs trail={[{ label: "Contact" }]} />
         <h1 className="display page-title reveal" style={{ ["--d" as string]: "80ms" }}>
-          Let&apos;s talk.
+          Let’s talk.
         </h1>
         <p className="lede page-lede reveal" style={{ ["--d" as string]: "160ms" }}>
           Tell me what you are trying to build. A few lines is enough. I reply with questions, or with a short written plan.
@@ -23,6 +24,12 @@ export default function Contact() {
         <a href={`mailto:${EMAIL}`} className="contact-big reveal" style={{ ["--d" as string]: "240ms" }}>
           {EMAIL}
         </a>
+        <div className="cta-actions reveal" style={{ marginTop: "2rem", ["--d" as string]: "300ms" }}>
+          <a href={`mailto:${EMAIL}`} className="btn btn-ink">
+            Write an email <span className="arrow">→</span>
+          </a>
+          <CopyEmail email={EMAIL} />
+        </div>
       </section>
       <section className="split" style={{ paddingBottom: "8rem" }}>
         <p className="eyebrow reveal">Helpful to include</p>

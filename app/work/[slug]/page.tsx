@@ -31,7 +31,7 @@ export default function CasePage({ params }: Params) {
       <section className="wrap page-head">
         <Crumbs trail={[{ href: "/work", label: "Work" }, { label: p.title }]} />
         <p className="eyebrow reveal" style={{ marginTop: "2.5rem", ["--d" as string]: "60ms" }}>
-          {p.kind} · Demo, invented data
+          {p.kind} · Working demo, sample data
         </p>
         <h1 className="display page-title reveal" style={{ marginTop: "1rem", ["--d" as string]: "120ms" }}>
           {p.title}
@@ -96,14 +96,26 @@ export default function CasePage({ params }: Params) {
         <div className="split">
           <p className="eyebrow reveal">Screens</p>
           <div className="screens">
-            {p.screens.map((s) => (
-              <figure key={s.src} className={s.w < s.h ? "screen-phone reveal" : "reveal"}>
-                <div className={s.w < s.h ? "frame frame-phone" : "frame"}>
-                  <Image src={s.src} alt={s.alt} width={s.w} height={s.h} sizes="(min-width: 1024px) 60vw, 100vw" className="block h-auto w-full" />
-                </div>
-                <figcaption className="caption">{s.alt}</figcaption>
-              </figure>
-            ))}
+            {p.screens.map((s) =>
+              s.w < s.h ? (
+                <figure key={s.src} className="screen-phone-row reveal">
+                  <div className="frame frame-phone screen-phone">
+                    <Image src={s.src} alt={s.alt} width={s.w} height={s.h} sizes="304px" className="block h-auto w-full" />
+                  </div>
+                  <figcaption className="caption caption-side">
+                    <span className="eyebrow">Mobile</span>
+                    {s.alt}
+                  </figcaption>
+                </figure>
+              ) : (
+                <figure key={s.src} className="reveal">
+                  <div className="frame">
+                    <Image src={s.src} alt={s.alt} width={s.w} height={s.h} sizes="(min-width: 1024px) 60vw, 100vw" className="block h-auto w-full" />
+                  </div>
+                  <figcaption className="caption">{s.alt}</figcaption>
+                </figure>
+              ),
+            )}
           </div>
         </div>
       </section>
